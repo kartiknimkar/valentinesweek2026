@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,14 +6,18 @@
   <title>Our Valentine Week</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Sora:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Marcellus&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="src/style.css" />
 </head>
 <body>
+  <div class="sky-glow left"></div>
+  <div class="sky-glow right"></div>
+
   <main class="app-shell">
     <header class="topbar">
-      <p class="eyebrow">Valentine Countdown Story</p>
-      <h1>For You, One Day At A Time</h1>
+      <p class="eyebrow">Valentine Week Story</p>
+      <h1>To My Forever Favorite Person</h1>
+      <p class="subtitle">A small universe that opens one chapter at a time.</p>
       <div class="meta-row">
         <span id="dayBadge" class="badge">Loading day...</span>
         <span id="previewTag" class="preview hidden">Preview Mode</span>
@@ -21,12 +25,19 @@
     </header>
 
     <section class="day-card" data-day="1" id="day1Card">
-      <h2>Day 1 - First Bloom</h2>
-      <p class="card-copy">Click the seed. Watch the tree grow. Your first letter piece appears after the bloom.</p>
-      <button id="growTreeBtn" class="cta">Start Day 1</button>
+      <h2>Day 1 - Midnight Bloom</h2>
+      <p class="card-copy">Touch the heart seed and wait for the sky to bloom. Your first letter piece appears at the end.</p>
+
+      <button id="growTreeBtn" class="cta">Begin Our Story</button>
 
       <div id="treeStage" class="tree-stage" aria-hidden="true">
-        <div class="seed"></div>
+        <div class="moon"></div>
+        <div class="spark spark-1"></div>
+        <div class="spark spark-2"></div>
+        <div class="spark spark-3"></div>
+        <div class="spark spark-4"></div>
+
+        <div class="seed-heart"></div>
         <div class="tree-trunk"></div>
         <div class="branch left"></div>
         <div class="branch right"></div>
@@ -34,16 +45,18 @@
         <div class="blossom b2"></div>
         <div class="blossom b3"></div>
         <div class="blossom b4"></div>
+
+        <div id="petalBurst" class="petal-burst" aria-hidden="true"></div>
       </div>
 
       <article id="letterPanel" class="letter-panel hidden" aria-live="polite">
-        <h3>Day 1 Letter</h3>
+        <h3>Your Day 1 Letter</h3>
         <p id="day1Letter">Loading your letter...</p>
       </article>
     </section>
 
     <section class="day-card locked" data-day="2">
-      <h2>Day 2 - Branches & Promise</h2>
+      <h2>Day 2 - Promise Branches</h2>
       <p class="card-copy">Unlocks on February 12.</p>
     </section>
 
@@ -53,7 +66,7 @@
     </section>
 
     <section class="day-card locked" data-day="4">
-      <h2>Day 4 - Final Reveal</h2>
+      <h2>Day 4 - Final Sky</h2>
       <p class="card-copy">Unlocks on February 14.</p>
     </section>
   </main>

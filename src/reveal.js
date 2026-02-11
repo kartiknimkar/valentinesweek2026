@@ -1,9 +1,11 @@
-﻿const DAY_START = { month: 1, day: 11 };
+const DAY_START = { month: 1, day: 11 };
 const DAY_END = { month: 1, day: 14 };
 
 export const revealConfig = {
-  previewMode: false,
-  forceDay: null,
+  // Locked to Day 1 preview for now while only Day 1 is production ready.
+  // When Day 2-4 are built, change to previewMode: false, forceDay: null.
+  previewMode: true,
+  forceDay: 1,
 };
 
 function clampDay(value) {

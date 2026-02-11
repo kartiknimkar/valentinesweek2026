@@ -1,4 +1,10 @@
-﻿async function loadDay1Letter() {
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+async function loadDay1Letter() {
   try {
     const response = await fetch("content/day1.txt", { cache: "no-store" });
     if (!response.ok) {
@@ -12,7 +18,32 @@
 
     return text;
   } catch {
-    return "Day 1 letter could not load. Run this with a local server and edit content/day1.txt.";
+    return "Could not load Day 1 letter. Edit content/day1.txt and run from a local/static server.";
+  }
+}
+
+function spawnHeartBurst(container, count = 22) {
+  for (let i = 0; i < count; i += 1) {
+    const heart = document.createElement("span");
+    heart.className = "floating-heart";
+
+    const left = 20 + Math.random() * 60;
+    const delay = Math.random() * 0.9;
+    const drift = -65 + Math.random() * 130;
+    const size = 10 + Math.random() * 12;
+
+    heart.style.left = `${left}%`;
+    heart.style.bottom = "22px";
+    heart.style.animationDelay = `${delay}s`;
+    heart.style.setProperty("--drift", `${drift}px`);
+    heart.style.width = `${size}px`;
+    heart.style.height = `${size}px`;
+
+    container.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5200);
   }
 }
 
@@ -21,25 +52,32 @@ export async function mountDay1Scene() {
   const treeStage = document.querySelector("#treeStage");
   const letterPanel = document.querySelector("#letterPanel");
   const letterText = document.querySelector("#day1Letter");
+  const petalBurst = document.querySelector("#petalBurst");
 
-  if (!growButton || !treeStage || !letterPanel || !letterText) {
+  if (!growButton || !treeStage || !letterPanel || !letterText || !petalBurst) {
     return;
   }
 
   letterText.textContent = await loadDay1Letter();
 
-  growButton.addEventListener("click", () => {
+  growButton.addEventListener("click", async () => {
     if (treeStage.classList.contains("grown")) {
       return;
     }
 
     growButton.disabled = true;
-    growButton.textContent = "Growing...";
+    growButton.textContent = "Blooming...";
+
+    treeStage.classList.add("awaken");
+    await sleep(300);
     treeStage.classList.add("grown");
 
-    setTimeout(() => {
-      letterPanel.classList.remove("hidden");
-      growButton.textContent = "Day 1 Complete";
-    }, 2500);
+    await sleep(1300);
+    spawnHeartBurst(petalBurst);
+
+    await sleep(1700);
+    letterPanel.classList.remove("hidden");
+    letterPanel.classList.add("revealed");
+    growButton.textContent = "Day 1 Complete";
   });
 }
