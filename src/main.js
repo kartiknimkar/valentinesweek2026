@@ -19,9 +19,9 @@ function updateHeader(state) {
 }
 
 function unlockCopy(day) {
-  if (day === 2) return "Locked for now. Unlock manually when ready.";
-  if (day === 3) return "Locked for now. Unlock manually when ready.";
-  if (day === 4) return "Locked for now. Unlock manually when ready.";
+  if (day === 2) return "Locked for now.";
+  if (day === 3) return "Locked for now.";
+  if (day === 4) return "Locked for now.";
   return "Locked for now.";
 }
 
