@@ -1,20 +1,20 @@
 import { loadLetter, sleep } from "./utils.js";
 
-function spawnPetals(container, count = 36) {
+function spawnPetals(container, count = 44) {
   for (let i = 0; i < count; i += 1) {
     const petal = document.createElement("span");
     petal.className = "falling-petal";
 
     petal.style.left = `${Math.random() * 100}%`;
     petal.style.animationDelay = `${Math.random() * 1.1}s`;
-    petal.style.animationDuration = `${3 + Math.random() * 2.3}s`;
+    petal.style.animationDuration = `${3.2 + Math.random() * 2.2}s`;
     petal.style.transform = `rotate(${Math.random() * 360}deg)`;
 
     container.appendChild(petal);
 
     setTimeout(() => {
       petal.remove();
-    }, 6000);
+    }, 6200);
   }
 }
 
@@ -37,14 +37,16 @@ export async function mountDay3Scene() {
     }
 
     button.disabled = true;
-    button.textContent = "Blooming memories...";
+    button.textContent = "Growing the garden...";
 
     stage.classList.add("active");
-    spawnPetals(petalLayer);
 
-    await sleep(1900);
+    await sleep(550);
+    spawnPetals(petalLayer, 48);
+
+    await sleep(1850);
     panel.classList.remove("hidden");
     panel.classList.add("revealed");
-    button.textContent = "Garden Open";
+    button.textContent = "Garden Bloomed";
   });
 }

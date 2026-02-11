@@ -1,13 +1,26 @@
-import { loadLetter, loadLetters, sleep } from "./utils.js";
+import { loadLetters, sleep } from "./utils.js";
+
+async function typeText(element, message, speed = 95) {
+  element.textContent = "";
+  element.classList.add("typing");
+
+  for (let i = 0; i < message.length; i += 1) {
+    element.textContent += message[i];
+    await sleep(speed);
+  }
+
+  element.classList.remove("typing");
+}
 
 export async function mountDay4Scene() {
   const button = document.querySelector("#day4OpenBtn");
   const envelope = document.querySelector("#day4Envelope");
   const panel = document.querySelector("#day4LetterPanel");
   const summary = document.querySelector("#day4StorySummary");
+  const loveTyped = document.querySelector("#day4LoveTyped");
   const day4Text = document.querySelector("#day4Letter");
 
-  if (!button || !envelope || !panel || !summary || !day4Text) {
+  if (!button || !envelope || !panel || !summary || !loveTyped || !day4Text) {
     return;
   }
 
@@ -33,6 +46,8 @@ export async function mountDay4Scene() {
 
     panel.classList.remove("hidden");
     panel.classList.add("revealed");
+
+    await typeText(loveTyped, "I love you so much.", 86);
     button.textContent = "Forever Open";
   });
 }
