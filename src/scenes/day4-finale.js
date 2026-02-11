@@ -27,12 +27,20 @@ export async function mountDay4Scene() {
 
   const [d1, d2, d3, d4] = await loadLetters([1, 2, 3, 4]);
   day4Text.textContent = d4;
+  summary.innerHTML = "";
 
-  summary.innerHTML = [
-    `<li><strong>Day 1:</strong> ${d1}</li>`,
-    `<li><strong>Day 2:</strong> ${d2}</li>`,
-    `<li><strong>Day 3:</strong> ${d3}</li>`,
-  ].join("");
+  [
+    { label: "Day 1", text: d1 },
+    { label: "Day 2", text: d2 },
+    { label: "Day 3", text: d3 },
+  ].forEach((item) => {
+    const li = document.createElement("li");
+    const strong = document.createElement("strong");
+    strong.textContent = `${item.label}: `;
+    li.appendChild(strong);
+    li.append(item.text);
+    summary.appendChild(li);
+  });
 
   button.addEventListener("click", async () => {
     if (envelope.classList.contains("open")) {
