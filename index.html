@@ -25,8 +25,8 @@
     </header>
 
     <section class="day-card day-one" data-day="1" id="day1Card">
-      <h2>Day 1 - Midnight Bloom</h2>
-      <p class="card-copy">Touch the heart seed. The first bloom reveals your opening lines.</p>
+      <h2>Day 1 - Heart Constellation</h2>
+      <p class="card-copy">Light the sky and let a heart-shaped constellation draw itself for the first letter reveal.</p>
       <button id="growTreeBtn" class="cta">Begin Our Story</button>
 
       <div id="treeStage" class="tree-stage" aria-hidden="true">
@@ -35,19 +35,24 @@
         <div class="spark spark-2"></div>
         <div class="spark spark-3"></div>
         <div class="spark spark-4"></div>
-
-        <div class="seed-heart"></div>
-        <div class="tree-trunk"></div>
-        <div class="branch left"></div>
-        <div class="branch right"></div>
-        <div class="blossom b1"></div>
-        <div class="blossom b2"></div>
-        <div class="blossom b3"></div>
-        <div class="blossom b4"></div>
-        <div class="blossom b5"></div>
-        <div class="blossom b6"></div>
-
-        <div id="petalBurst" class="petal-burst" aria-hidden="true"></div>
+        <div class="heart-point p1"></div>
+        <div class="heart-point p2"></div>
+        <div class="heart-point p3"></div>
+        <div class="heart-point p4"></div>
+        <div class="heart-point p5"></div>
+        <div class="heart-point p6"></div>
+        <div class="heart-point p7"></div>
+        <div class="heart-point p8"></div>
+        <div class="heart-line l1"></div>
+        <div class="heart-line l2"></div>
+        <div class="heart-line l3"></div>
+        <div class="heart-line l4"></div>
+        <div class="heart-line l5"></div>
+        <div class="heart-line l6"></div>
+        <div class="heart-line l7"></div>
+        <div class="heart-line l8"></div>
+        <div class="shooting-star"></div>
+        <div id="day1GlowLayer" class="day1-glow-layer" aria-hidden="true"></div>
       </div>
 
       <article id="letterPanel" class="letter-panel hidden" aria-live="polite">
@@ -132,11 +137,13 @@
         <div class="envelope-back"></div>
         <div class="envelope-flap"></div>
         <div class="envelope-heart-seal"></div>
+        <div id="day4EnvelopeNote" class="envelope-note">
+          <p id="day4EnvelopeText" class="envelope-text"></p>
+        </div>
       </div>
 
       <article id="day4LetterPanel" class="letter-panel hidden" aria-live="polite">
         <h3>Your Day 4 Letter</h3>
-        <p id="day4LoveTyped" class="typed-love"></p>
         <p id="day4Letter">Loading your letter...</p>
         <h4>Story So Far</h4>
         <ul id="day4StorySummary" class="story-summary"></ul>

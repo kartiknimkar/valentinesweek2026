@@ -15,12 +15,13 @@ async function typeText(element, message, speed = 95) {
 export async function mountDay4Scene() {
   const button = document.querySelector("#day4OpenBtn");
   const envelope = document.querySelector("#day4Envelope");
+  const envelopeNote = document.querySelector("#day4EnvelopeNote");
+  const envelopeText = document.querySelector("#day4EnvelopeText");
   const panel = document.querySelector("#day4LetterPanel");
   const summary = document.querySelector("#day4StorySummary");
-  const loveTyped = document.querySelector("#day4LoveTyped");
   const day4Text = document.querySelector("#day4Letter");
 
-  if (!button || !envelope || !panel || !summary || !loveTyped || !day4Text) {
+  if (!button || !envelope || !envelopeNote || !envelopeText || !panel || !summary || !day4Text) {
     return;
   }
 
@@ -42,12 +43,14 @@ export async function mountDay4Scene() {
     button.textContent = "Opening...";
 
     envelope.classList.add("open");
-    await sleep(900);
+    await sleep(560);
 
+    envelopeNote.classList.add("show");
+    await typeText(envelopeText, "I love you so much.", 86);
+
+    await sleep(450);
     panel.classList.remove("hidden");
     panel.classList.add("revealed");
-
-    await typeText(loveTyped, "I love you so much.", 86);
     button.textContent = "Forever Open";
   });
 }

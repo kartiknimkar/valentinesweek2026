@@ -1,54 +1,51 @@
 import { loadLetter, sleep } from "./utils.js";
 
-function spawnHeartBurst(container, count = 22) {
+function spawnGlowBurst(container, count = 28) {
   for (let i = 0; i < count; i += 1) {
-    const heart = document.createElement("span");
-    heart.className = "floating-heart";
+    const glow = document.createElement("span");
+    glow.className = "day1-glow";
 
-    heart.style.left = `${20 + Math.random() * 60}%`;
-    heart.style.bottom = "22px";
-    heart.style.animationDelay = `${Math.random() * 0.9}s`;
-    heart.style.setProperty("--drift", `${-65 + Math.random() * 130}px`);
+    glow.style.left = `${20 + Math.random() * 60}%`;
+    glow.style.top = `${25 + Math.random() * 45}%`;
+    glow.style.animationDelay = `${Math.random() * 0.8}s`;
+    glow.style.animationDuration = `${2 + Math.random() * 1.2}s`;
 
-    container.appendChild(heart);
+    container.appendChild(glow);
 
     setTimeout(() => {
-      heart.remove();
-    }, 5200);
+      glow.remove();
+    }, 3400);
   }
 }
 
 export async function mountDay1Scene() {
-  const growButton = document.querySelector("#growTreeBtn");
-  const treeStage = document.querySelector("#treeStage");
+  const button = document.querySelector("#growTreeBtn");
+  const stage = document.querySelector("#treeStage");
   const letterPanel = document.querySelector("#letterPanel");
   const letterText = document.querySelector("#day1Letter");
-  const petalBurst = document.querySelector("#petalBurst");
+  const glowLayer = document.querySelector("#day1GlowLayer");
 
-  if (!growButton || !treeStage || !letterPanel || !letterText || !petalBurst) {
+  if (!button || !stage || !letterPanel || !letterText || !glowLayer) {
     return;
   }
 
   letterText.textContent = await loadLetter(1);
 
-  growButton.addEventListener("click", async () => {
-    if (treeStage.classList.contains("grown")) {
+  button.addEventListener("click", async () => {
+    if (stage.classList.contains("active")) {
       return;
     }
 
-    growButton.disabled = true;
-    growButton.textContent = "Blooming...";
+    button.disabled = true;
+    button.textContent = "Drawing the sky...";
 
-    treeStage.classList.add("awaken");
-    await sleep(300);
-    treeStage.classList.add("grown");
+    stage.classList.add("active");
+    await sleep(950);
+    spawnGlowBurst(glowLayer, 34);
 
-    await sleep(1300);
-    spawnHeartBurst(petalBurst, 30);
-
-    await sleep(1600);
+    await sleep(1550);
     letterPanel.classList.remove("hidden");
     letterPanel.classList.add("revealed");
-    growButton.textContent = "Day 1 Complete";
+    button.textContent = "Constellation Complete";
   });
 }
