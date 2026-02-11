@@ -16,18 +16,17 @@
   <main class="app-shell">
     <header class="topbar">
       <p class="eyebrow">Valentine Week Story</p>
-      <h1>To My Forever Favorite Person</h1>
-      <p class="subtitle">A small universe that opens one chapter at a time.</p>
+      <h1>Four Days. One Love Story.</h1>
+      <p class="subtitle">Each chapter reveals a deeper part of your letter.</p>
       <div class="meta-row">
         <span id="dayBadge" class="badge">Loading day...</span>
         <span id="previewTag" class="preview hidden">Preview Mode</span>
       </div>
     </header>
 
-    <section class="day-card" data-day="1" id="day1Card">
+    <section class="day-card day-one" data-day="1" id="day1Card">
       <h2>Day 1 - Midnight Bloom</h2>
-      <p class="card-copy">Touch the heart seed and wait for the sky to bloom. Your first letter piece appears at the end.</p>
-
+      <p class="card-copy">Touch the heart seed. The first bloom reveals your opening lines.</p>
       <button id="growTreeBtn" class="cta">Begin Our Story</button>
 
       <div id="treeStage" class="tree-stage" aria-hidden="true">
@@ -55,19 +54,58 @@
       </article>
     </section>
 
-    <section class="day-card locked" data-day="2">
-      <h2>Day 2 - Promise Branches</h2>
-      <p class="card-copy">Unlocks on February 12.</p>
+    <section class="day-card day-two" data-day="2">
+      <h2>Day 2 - Constellation Promise</h2>
+      <p class="card-copy">Light the lantern and send a wish into the sky.</p>
+      <button id="day2WishBtn" class="cta">Light The Lantern</button>
+
+      <div id="day2Stage" class="wish-stage" aria-hidden="true">
+        <div class="lantern"></div>
+        <div class="wish-line"></div>
+        <div id="day2StarLayer" class="wish-stars"></div>
+      </div>
+
+      <article id="day2LetterPanel" class="letter-panel hidden" aria-live="polite">
+        <h3>Your Day 2 Letter</h3>
+        <p id="day2Letter">Loading your letter...</p>
+      </article>
     </section>
 
-    <section class="day-card locked" data-day="3">
-      <h2>Day 3 - Flower Storm</h2>
-      <p class="card-copy">Unlocks on February 13.</p>
+    <section class="day-card day-three" data-day="3">
+      <h2>Day 3 - Garden of Memories</h2>
+      <p class="card-copy">Wake the garden and watch petals dance around your words.</p>
+      <button id="day3BloomBtn" class="cta">Wake The Garden</button>
+
+      <div id="day3Stage" class="garden-stage" aria-hidden="true">
+        <div class="memory-orb orb-1"></div>
+        <div class="memory-orb orb-2"></div>
+        <div class="memory-orb orb-3"></div>
+        <div id="day3PetalLayer" class="petal-layer"></div>
+      </div>
+
+      <article id="day3LetterPanel" class="letter-panel hidden" aria-live="polite">
+        <h3>Your Day 3 Letter</h3>
+        <p id="day3Letter">Loading your letter...</p>
+      </article>
     </section>
 
-    <section class="day-card locked" data-day="4">
-      <h2>Day 4 - Final Sky</h2>
-      <p class="card-copy">Unlocks on February 14.</p>
+    <section class="day-card day-four" data-day="4">
+      <h2>Day 4 - Final Envelope</h2>
+      <p class="card-copy">Open the final letter and see the full arc of your story.</p>
+      <button id="day4OpenBtn" class="cta">Open Final Letter</button>
+
+      <div id="day4Envelope" class="envelope-stage" aria-hidden="true">
+        <div class="envelope-back"></div>
+        <div class="envelope-flap"></div>
+        <div class="envelope-heart-seal"></div>
+      </div>
+
+      <article id="day4LetterPanel" class="letter-panel hidden" aria-live="polite">
+        <h3>Your Day 4 Letter</h3>
+        <p id="day4Letter">Loading your letter...</p>
+        <h4>Story So Far</h4>
+        <ul id="day4StorySummary" class="story-summary"></ul>
+      </article>
     </section>
   </main>
 

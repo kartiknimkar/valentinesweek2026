@@ -1,5 +1,8 @@
-﻿import { getRevealState } from "./reveal.js";
+import { getRevealState } from "./reveal.js";
 import { mountDay1Scene } from "./scenes/day1-intro.js";
+import { mountDay2Scene } from "./scenes/day2-promise.js";
+import { mountDay3Scene } from "./scenes/day3-flowers.js";
+import { mountDay4Scene } from "./scenes/day4-finale.js";
 
 function updateHeader(state) {
   const dayBadge = document.querySelector("#dayBadge");
@@ -15,22 +18,30 @@ function updateHeader(state) {
   }
 }
 
+function unlockCopy(day) {
+  if (day === 2) return "Unlocks on February 12.";
+  if (day === 3) return "Unlocks on February 13.";
+  if (day === 4) return "Unlocks on February 14.";
+  return "Unlocks soon.";
+}
+
 function applyLocks(unlockedDay) {
   const cards = document.querySelectorAll("[data-day]");
+
   cards.forEach((card) => {
     const day = Number(card.getAttribute("data-day"));
     const isUnlocked = day <= unlockedDay;
     card.classList.toggle("locked", !isUnlocked);
 
-    if (!isUnlocked && day === 1) {
-      const button = card.querySelector("button");
-      const copy = card.querySelector(".card-copy");
-      if (button) {
-        button.disabled = true;
-      }
-      if (copy) {
-        copy.textContent = "Day 1 opens on February 11.";
-      }
+    const button = card.querySelector("button");
+    const copy = card.querySelector(".card-copy");
+
+    if (button) {
+      button.disabled = !isUnlocked;
+    }
+
+    if (copy && !isUnlocked) {
+      copy.textContent = unlockCopy(day);
     }
   });
 }
@@ -40,9 +51,10 @@ async function init() {
   updateHeader(state);
   applyLocks(state.unlockedDay);
 
-  if (state.unlockedDay >= 1) {
-    await mountDay1Scene();
-  }
+  if (state.unlockedDay >= 1) await mountDay1Scene();
+  if (state.unlockedDay >= 2) await mountDay2Scene();
+  if (state.unlockedDay >= 3) await mountDay3Scene();
+  if (state.unlockedDay >= 4) await mountDay4Scene();
 }
 
 void init();

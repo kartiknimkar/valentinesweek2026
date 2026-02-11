@@ -1,43 +1,14 @@
-function sleep(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
-}
-
-async function loadDay1Letter() {
-  try {
-    const response = await fetch("content/day1.txt", { cache: "no-store" });
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const text = (await response.text()).trim();
-    if (!text) {
-      return "Write your Day 1 line in content/day1.txt";
-    }
-
-    return text;
-  } catch {
-    return "Could not load Day 1 letter. Edit content/day1.txt and run from a local/static server.";
-  }
-}
+import { loadLetter, sleep } from "./utils.js";
 
 function spawnHeartBurst(container, count = 22) {
   for (let i = 0; i < count; i += 1) {
     const heart = document.createElement("span");
     heart.className = "floating-heart";
 
-    const left = 20 + Math.random() * 60;
-    const delay = Math.random() * 0.9;
-    const drift = -65 + Math.random() * 130;
-    const size = 10 + Math.random() * 12;
-
-    heart.style.left = `${left}%`;
+    heart.style.left = `${20 + Math.random() * 60}%`;
     heart.style.bottom = "22px";
-    heart.style.animationDelay = `${delay}s`;
-    heart.style.setProperty("--drift", `${drift}px`);
-    heart.style.width = `${size}px`;
-    heart.style.height = `${size}px`;
+    heart.style.animationDelay = `${Math.random() * 0.9}s`;
+    heart.style.setProperty("--drift", `${-65 + Math.random() * 130}px`);
 
     container.appendChild(heart);
 
@@ -58,7 +29,7 @@ export async function mountDay1Scene() {
     return;
   }
 
-  letterText.textContent = await loadDay1Letter();
+  letterText.textContent = await loadLetter(1);
 
   growButton.addEventListener("click", async () => {
     if (treeStage.classList.contains("grown")) {
@@ -73,9 +44,9 @@ export async function mountDay1Scene() {
     treeStage.classList.add("grown");
 
     await sleep(1300);
-    spawnHeartBurst(petalBurst);
+    spawnHeartBurst(petalBurst, 30);
 
-    await sleep(1700);
+    await sleep(1600);
     letterPanel.classList.remove("hidden");
     letterPanel.classList.add("revealed");
     growButton.textContent = "Day 1 Complete";

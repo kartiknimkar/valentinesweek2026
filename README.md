@@ -1,50 +1,44 @@
 # Valentines Week Surprise (Feb 11 - Feb 14)
 
-## Project Goal
-Build one romantic website that evolves daily from **Feb 11** to **Feb 14**.
-Each day unlocks a better experience, ending in the full reveal on Feb 14.
+## Goal
+A romantic website that unlocks one chapter per day from Feb 11 to Feb 14, with each day revealing a new part of your letter.
 
-## Current Status
-- Day 1 is implemented with a cinematic romantic reveal (interactive bloom + letter reveal).
-- Day 2-Day 4 are intentionally locked placeholders for now.
-- Letter content is loaded from text files in `content/`.
+## Current Build
+All four days are now implemented with separate interactions:
+- Day 1: Midnight Bloom (tree + hearts + first letter reveal)
+- Day 2: Constellation Promise (lantern + star wish effect)
+- Day 3: Garden of Memories (petal rain + memory orbs)
+- Day 4: Final Envelope (opening animation + final letter + story recap)
 
-## Letter Workflow
-Edit these files any time:
+## Letter Files
+Edit these directly any time:
 - `content/day1.txt`
 - `content/day2.txt`
 - `content/day3.txt`
 - `content/day4.txt`
 
-Only unlocked days are shown in the UI.
-
-## Day 1 Preview (active now)
-`src/reveal.js` is currently set to always preview Day 1:
+## Preview Mode (enabled now)
+`src/reveal.js` is set to show all days live for preview:
 - `previewMode: true`
-- `forceDay: 1`
+- `forceDay: 4`
 
-This keeps the live site focused on Day 1 while Day 2-Day 4 are being built.
+When you are ready for date-based unlock, change to:
+- `previewMode: false`
+- `forceDay: null`
 
-## Re-enable Date-based Unlock Later
-When all day scenes are ready, update `src/reveal.js`:
-- set `previewMode: false`
-- set `forceDay: null`
-
-Then day unlocks follow this map:
+## Date Unlock Map
 - Feb 11 => Day 1
 - Feb 12 => Day 1-2
 - Feb 13 => Day 1-3
 - Feb 14 => Day 1-4
 
 ## Local Preview
-Run any static server from the project root (example):
+Run a static server from project root:
 ```bash
 python3 -m http.server 8080
 ```
-Then open `http://localhost:8080`.
+Open: `http://localhost:8080`
 
-## Deployment
-This repo is designed to be hosted on GitHub Pages.
-
-Expected URL:
+## GitHub Pages
+Expected live URL:
 `https://kartiknimkar.github.io/valentinesweek2026/`

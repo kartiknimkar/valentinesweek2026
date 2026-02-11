@@ -2,10 +2,9 @@ const DAY_START = { month: 1, day: 11 };
 const DAY_END = { month: 1, day: 14 };
 
 export const revealConfig = {
-  // Locked to Day 1 preview for now while only Day 1 is production ready.
-  // When Day 2-4 are built, change to previewMode: false, forceDay: null.
+  // Full preview is enabled so all 4 days are live right now.
   previewMode: true,
-  forceDay: 1,
+  forceDay: 4,
 };
 
 function clampDay(value) {
@@ -27,13 +26,8 @@ function getDateDayIndex(now) {
   const start = new Date(year, DAY_START.month, DAY_START.day);
   const end = new Date(year, DAY_END.month, DAY_END.day, 23, 59, 59, 999);
 
-  if (now < start) {
-    return 0;
-  }
-
-  if (now > end) {
-    return 4;
-  }
+  if (now < start) return 0;
+  if (now > end) return 4;
 
   const diffMs = now.getTime() - start.getTime();
   const dayOffset = Math.floor(diffMs / (24 * 60 * 60 * 1000));
