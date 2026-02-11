@@ -1,0 +1,63 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Valentine Week</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Sora:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <p class="eyebrow">Valentine Countdown Story</p>
+      <h1>For You, One Day At A Time</h1>
+      <div class="meta-row">
+        <span id="dayBadge" class="badge">Loading day...</span>
+        <span id="previewTag" class="preview hidden">Preview Mode</span>
+      </div>
+    </header>
+
+    <section class="day-card" data-day="1" id="day1Card">
+      <h2>Day 1 - First Bloom</h2>
+      <p class="card-copy">Click the seed. Watch the tree grow. Your first letter piece appears after the bloom.</p>
+      <button id="growTreeBtn" class="cta">Start Day 1</button>
+
+      <div id="treeStage" class="tree-stage" aria-hidden="true">
+        <div class="seed"></div>
+        <div class="tree-trunk"></div>
+        <div class="branch left"></div>
+        <div class="branch right"></div>
+        <div class="blossom b1"></div>
+        <div class="blossom b2"></div>
+        <div class="blossom b3"></div>
+        <div class="blossom b4"></div>
+      </div>
+
+      <article id="letterPanel" class="letter-panel hidden" aria-live="polite">
+        <h3>Day 1 Letter</h3>
+        <p id="day1Letter">Loading your letter...</p>
+      </article>
+    </section>
+
+    <section class="day-card locked" data-day="2">
+      <h2>Day 2 - Branches & Promise</h2>
+      <p class="card-copy">Unlocks on February 12.</p>
+    </section>
+
+    <section class="day-card locked" data-day="3">
+      <h2>Day 3 - Flower Storm</h2>
+      <p class="card-copy">Unlocks on February 13.</p>
+    </section>
+
+    <section class="day-card locked" data-day="4">
+      <h2>Day 4 - Final Reveal</h2>
+      <p class="card-copy">Unlocks on February 14.</p>
+    </section>
+  </main>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
