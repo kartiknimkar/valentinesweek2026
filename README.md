@@ -1,44 +1,40 @@
-# Valentines Week Surprise (Feb 11 - Feb 14)
+# Valentines Week Surprise
 
 ## Goal
-A romantic website that unlocks one chapter per day from Feb 11 to Feb 14, with each day revealing a new part of your letter.
+A romantic website where you manually unlock each day whenever you want.
 
-## Current Build
-All four days are now implemented with separate interactions:
-- Day 1: Midnight Bloom (tree + hearts + first letter reveal)
-- Day 2: Constellation Promise (lantern + star wish effect)
-- Day 3: Garden of Memories (petal rain + memory orbs)
-- Day 4: Final Envelope (opening animation + final letter + story recap)
+## Manual Unlock Control
+Edit `src/reveal.js`:
+
+```js
+export const revealConfig = {
+  manualUnlockedDay: 1,
+};
+```
+
+Set `manualUnlockedDay` to:
+- `1` => only Day 1 unlocked
+- `2` => Day 1-2 unlocked
+- `3` => Day 1-3 unlocked
+- `4` => all days unlocked
+
+The header badge always shows the currently unlocked day and today's date.
 
 ## Letter Files
-Edit these directly any time:
+Edit these anytime:
 - `content/day1.txt`
 - `content/day2.txt`
 - `content/day3.txt`
 - `content/day4.txt`
 
-## Preview Mode (enabled now)
-`src/reveal.js` is set to show all days live for preview:
-- `previewMode: true`
-- `forceDay: 4`
-
-When you are ready for date-based unlock, change to:
-- `previewMode: false`
-- `forceDay: null`
-
-## Date Unlock Map
-- Feb 11 => Day 1
-- Feb 12 => Day 1-2
-- Feb 13 => Day 1-3
-- Feb 14 => Day 1-4
+Long multi-line letter text is supported and auto-wraps in the letter panels.
 
 ## Local Preview
-Run a static server from project root:
 ```bash
 python3 -m http.server 8080
 ```
-Open: `http://localhost:8080`
+Then open `http://localhost:8080`.
 
 ## GitHub Pages
-Expected live URL:
+Live URL:
 `https://kartiknimkar.github.io/valentinesweek2026/`

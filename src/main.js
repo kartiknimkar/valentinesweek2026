@@ -19,10 +19,10 @@ function updateHeader(state) {
 }
 
 function unlockCopy(day) {
-  if (day === 2) return "Unlocks on February 12.";
-  if (day === 3) return "Unlocks on February 13.";
-  if (day === 4) return "Unlocks on February 14.";
-  return "Unlocks soon.";
+  if (day === 2) return "Locked for now. Unlock manually when ready.";
+  if (day === 3) return "Locked for now. Unlock manually when ready.";
+  if (day === 4) return "Locked for now. Unlock manually when ready.";
+  return "Locked for now.";
 }
 
 function applyLocks(unlockedDay) {
