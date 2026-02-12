@@ -1,7 +1,7 @@
 export const revealConfig = {
   // Manual unlock mode (no auto date-based unlock)
   // Set this to 1,2,3,4 whenever you want to unlock a new day.
-  manualUnlockedDay: 1,
+  manualUnlockedDay: 2,
 };
 
 function clampDay(value) {
